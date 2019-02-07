@@ -16,7 +16,7 @@ UPDATE_BREW=1
 
 echo ""
 echo "${GREEN}Running Evasio Bootstrap v${VERSION} (${DATE})${DEFAULT}"
-echo "${GREEN}============================================${DEFAULT}"
+echo "${GREEN}==========================================${DEFAULT}"
 echo ""
 echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} -u\" ${DEFAULT}"
 echo ""
