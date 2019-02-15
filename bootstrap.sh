@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
-VERSION="1.0"
-DATE="2019-02-07"
+VERSION="1.1"
+DATE="2019-02-16"
 
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
