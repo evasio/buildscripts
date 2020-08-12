@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -u # set -o nounset
+set -e # set -o errexit
 
 VERSION="1.1"
 DATE="2019-02-16"
@@ -21,7 +22,7 @@ echo ""
 echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} -u\" ${DEFAULT}"
 echo ""
 
-if [[ $1 == "-u" ]]; then
+if [[ $# -eq 1 ]] && [[ $1 == "-u" ]]; then
 	echo ""
 	echo " > ${GREEN}Updating ${SCRIPT_FILE}${DEFAULT}";
 	curl -L $SCRIPT_SOURCE?$(date +%s) -o $0
