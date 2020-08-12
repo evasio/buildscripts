@@ -19,10 +19,10 @@ echo ""
 echo "${GREEN}Running Evasio Bootstrap v${VERSION} (${DATE})${DEFAULT}"
 echo "${GREEN}==========================================${DEFAULT}"
 echo ""
-echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} -u\" ${DEFAULT}"
+echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} --update\" ${DEFAULT}"
 echo ""
 
-if [[ $# -eq 1 ]] && [[ $1 == "-u" ]]; then
+if [[ $# -eq 1 ]] && [[ $1 == "--update" ]]; then
 	echo ""
 	echo " > ${GREEN}Updating ${SCRIPT_FILE}${DEFAULT}";
 	curl -L $SCRIPT_SOURCE?$(date +%s) -o $0
