@@ -3,12 +3,12 @@
 set -u # set -o nounset
 set -e # set -o errexit
 
-VERSION="1.1"
-DATE="2019-02-16"
+VERSION="1.2"
+DATE="2020-08-12"
 
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
-DEFAULT=`tput sgr0`
+NC=`tput sgr0`
 
 SCRIPT_FILE="bootstrap.sh"
 SCRIPT_SOURCE="https://raw.githubusercontent.com/evasio/buildscripts/master/${SCRIPT_FILE}"
@@ -16,15 +16,15 @@ SCRIPT_SOURCE="https://raw.githubusercontent.com/evasio/buildscripts/master/${SC
 UPDATE_BREW=1
 
 echo ""
-echo "${GREEN}Running Evasio Bootstrap v${VERSION} (${DATE})${DEFAULT}"
-echo "${GREEN}==========================================${DEFAULT}"
+echo "${GREEN}Running Evasio Bootstrap v${VERSION} (${DATE})${NC}"
+echo "${GREEN}==========================================${NC}"
 echo ""
-echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} --update\" ${DEFAULT}"
+echo "${GREEN}  You can update this script by running \"${SCRIPT_FILE} --update\" ${NC}"
 echo ""
 
 if [[ $# -eq 1 ]] && [[ $1 == "--update" ]]; then
 	echo ""
-	echo " > ${GREEN}Updating ${SCRIPT_FILE}${DEFAULT}";
+	echo " > ${GREEN}Updating ${SCRIPT_FILE}${NC}";
 	curl -L $SCRIPT_SOURCE?$(date +%s) -o $0
 	exit 1
 fi
@@ -32,21 +32,21 @@ fi
 install_with_brew() {
 	if [ $UPDATE_BREW -eq 1 ]; then
 		echo ""
-		echo " > ${GREEN}Updating BREW${DEFAULT}";
+		echo " > ${GREEN}Updating BREW${NC}";
 
 		# update brew to keep dependencies up to date
-		brew update || echo " > ${RED}Failed to update BREW${DEFAULT}";
+		brew update || echo " > ${RED}Failed to update BREW${NC}";
 		UPDATE_BREW=0
 	fi
 
 	echo ""
-	echo " > ${GREEN}Installing $1 with BREW${DEFAULT}";
+	echo " > ${GREEN}Installing $1 with BREW${NC}";
 
 	# install dependency, if is not installed
-	brew list $1 || brew install $1 || echo " > ${RED}Failed to install $1 ${DEFAULT}";
+	brew list $1 || brew install $1 || echo " > ${RED}Failed to install $1 ${NC}";
 
 	# upgrade dependency, if it is outdated
-	brew outdated $1 || brew upgrade $1 || echo " > ${RED}Failed to upgrade $1 ${DEFAULT}";
+	brew outdated $1 || brew upgrade $1 || echo " > ${RED}Failed to upgrade $1 ${NC}";
 }
 
 if [ -e "Mintfile" ]; then
